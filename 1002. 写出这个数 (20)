@@ -1,0 +1,51 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	string n = "";//存储输入字符串
+	int sum = 0;
+	int index = 0;
+	char temp = 0;
+	cin >> n;
+	//计算各位之和
+	for(;index<n.length();index++)
+	{
+		temp = n[index];
+		sum += (temp-'0');
+	}
+	//和的结果保存在sum中，要拆解的数是sum!
+	string sum_str = "";
+	char a = 0;
+	index = 0;
+	//将sum倒序拆解
+	while (sum / 10)
+	{
+		a = (sum % 10) + 48;
+		sum_str += a;
+		sum /= 10;
+		index++;
+	}
+	sum_str += (sum + 48);
+	//此时得到的sum_str是倒序
+	for(;index>=0;index--)
+	{
+		switch (sum_str[index])
+		{
+		case '0':cout << "ling"; break;
+		case '1':cout << "yi"; break;
+		case '2':cout << "er"; break;
+		case '3':cout << "san"; break;
+		case '4':cout << "si"; break;
+		case '5':cout << "wu"; break;
+		case '6':cout << "liu"; break;
+		case '7':cout << "qi"; break;
+		case '8':cout << "ba"; break;
+		case '9':cout << "jiu"; break;
+		}
+		if (index)cout << " ";
+	}
+	
+	return 0;
+}
