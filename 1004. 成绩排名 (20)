@@ -1,0 +1,47 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int n = 0;//输入个数
+	int min = 0, max = 0;
+	string max_name = "", max_id = "", min_name = "", min_id = "";
+	cin >> n;
+	string in="";
+	string name = "", id = "", score = "";
+	int i = 0;
+	while(cin >> name >> id >> score)
+	{
+		char* s4 = new char[score.length()];
+		for (int i = 0; i < score.length(); i++)
+			s4[i] = score[i];
+		int cur = atoi(s4);
+		if (i == 0) {
+			max = cur;
+			min = cur;
+			max_name = name;
+			min_name = name;
+			max_id = id;
+			min_id = id;
+		}
+		if (cur > max)
+		{
+			max = cur;
+			max_name = name;
+			max_id = id;
+		}
+		else if (cur < min)
+		{
+			min = cur;
+			min_name = name; 
+			min_id = id;
+		}
+		i++;
+		if (i == n)break;
+	}
+	cout << max_name << " " << max_id << endl;
+	cout << min_name << " " << min_id << endl;
+	return 0;
+}
+
